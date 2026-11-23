@@ -71,7 +71,7 @@
   <hr class="rule">
   <div class="grid4">
    <div><h3>Bureautique et outils numériques</h3><p>Maîtrisez les outils essentiels pour gagner en efficacité.</p></div>
-   <div><h3>Intelligence artificielle</h3><p>Découvrez comment utiliser l'IA pour améliorer votre productivité.</p></div>
+   <div><h3>Intélligence artificielle</h3><p>Découvrez comment utiliser l'IA pour améliorer votre productivité.</p></div>
    <div><h3>Entrepreneuriat</h3><p>Développez les compétences nécessaires pour lancer et faire grandir votre activité.</p></div>
    <div><h3>Formations sur mesure</h3><p>Programmes adaptés aux besoins spécifiques de votre entreprise ou de votre équipe.</p></div>
   </div>
@@ -173,7 +173,7 @@
    <p class="lead">Une question, une idée, un doute ? Écrivez-moi, ce sera avec plaisir. Je vous répondrai avec une proposition adaptée à votre niveau et à vos objectifs. Merci pour votre confiance !</p>
    <ul class="coords">
     <li><b>Téléphone : </b><a href="tel:+2290143067122">+229 01 43 06 71 22</a></li>
-    <li><b>WhatsApp : </b><a href="wa.me/22966134541">+229 66 13 45 41</a></li>
+    <li><b>WhatsApp : </b><a href="https://wa.me/22966134541">+229 66 13 45 41</a></li>
     <li><b>Courriel : </b><a href="mailto:clovistutos@gmail.com">clovistutos@gmail.com</a></li>
    </ul>
   </div>
@@ -198,6 +198,7 @@
 <a class="wa-float" href="https://wa.me/22966134541?text=Bonjour%20Clovis%2C%20j%E2%80%99aimerais%20en%20savoir%20plus%20sur%20vos%20formations." target="_blank" rel="noopener">Une question ? Écrivez-moi</a>
 <footer class="site"><div class="wrap"><span>Merci de votre visite ! © 2026 Clovis C. Adjovi, formateur indépendant</span><span>Bénin</span></div></footer>
 
+<script src="I18n.js"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
@@ -209,13 +210,16 @@ document.querySelectorAll('[data-plan]').forEach(function(b){
 });
 function build(){
  var n=$('nom').value.trim(),t=$('texte').value.trim();
- if(!n||!t){$('msg').textContent='Il manque juste votre nom et votre message, et c\u2019est parti !';return null}
+ if(!n||!t){$('msg').textContent=i18n.t('Il manque juste votre nom et votre message, et c\u2019est parti !','Just your name and message are missing, and we\u2019re off!');return null}
  $('msg').textContent='';
- return 'Bonjour, je suis '+n+'. Formation souhaitée : '+$('formule').value+'.\n\n'+t;
+ return i18n.t('Bonjour, je suis ','Hello, I am ')+n+i18n.t('. Formation souhaitée : ','. Desired training: ')+$('formule').value+'.\n\n'+t;
 }
+$('wa').addEventListener('click',function(){var m=build();if(m)window.open('https://wa.me/22966134541?text='+encodeURIComponent(m),'_blank','noopener')});
+$('mail').addEventListener('click',function(){var m=build();if(m)location.href='mailto:clovistutos@gmail.com?subject='+encodeURIComponent(i18n.t('Demande de formation : ','Training request: ')+$('formule').value)+'&body='+encodeURIComponent(m)});
 $('wa').addEventListener('click',function(){var m=build();if(m)window.open('https://wa.me/22966134541?text='+encodeURIComponent(m),'_blank','noopener')});
 $('mail').addEventListener('click',function(){var m=build();if(m)location.href='mailto:clovistutos@gmail.com?subject='+encodeURIComponent('Demande de formation : '+$('formule').value)+'&body='+encodeURIComponent(m)});
 })();
 </script>
+
 </body>
 </html>
